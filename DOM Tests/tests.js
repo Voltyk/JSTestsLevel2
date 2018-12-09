@@ -214,7 +214,7 @@ for (var i = 0; i < 4; i++) {
     arr[j].setAttribute('id', i + '-' + j);
     arr[j].setAttribute('style', 'height:100px; width:100px; float:left');
     arr[j].onclick = function() {
-      let currPosition = this.id.split('-');
+      let currPosition = this.id.split('-').map(x => {return parseInt(x)});
       if (Math.abs(currPosition[0]-emptyCellPosition[0]) + Math.abs(currPosition[1]-emptyCellPosition[1]) === 1) {
         fifteenCellsDivsArray[emptyCellPosition[0]][emptyCellPosition[1]].appendChild(this.firstChild);
         if (currPosition[0]===emptyCellPosition[0]) {
@@ -227,6 +227,7 @@ for (var i = 0; i < 4; i++) {
         }else {
           if (currPosition[0]>emptyCellPosition[0]) {
             fifteenCellsDivsArray[emptyCellPosition[0]][emptyCellPosition[1]].classList.add('animate-moving-top');
+
           } else {
             fifteenCellsDivsArray[emptyCellPosition[0]][emptyCellPosition[1]].classList.add('animate-moving-bottom');
           }
@@ -234,7 +235,6 @@ for (var i = 0; i < 4; i++) {
         fifteenCellsDivsArray[currPosition[0]][currPosition[1]].innerHTML=null;
         this.classList=[];
         emptyCellPosition=currPosition.slice(0);
-
       }
 
     }
