@@ -217,8 +217,24 @@ for (var i = 0; i < 4; i++) {
       let currPosition = this.id.split('-');
       if (Math.abs(currPosition[0]-emptyCellPosition[0]) + Math.abs(currPosition[1]-emptyCellPosition[1]) === 1) {
         fifteenCellsDivsArray[emptyCellPosition[0]][emptyCellPosition[1]].appendChild(this.firstChild);
+        if (currPosition[0]===emptyCellPosition[0]) {
+          if (currPosition[1]>emptyCellPosition[1]) {
+            fifteenCellsDivsArray[emptyCellPosition[0]][emptyCellPosition[1]].classList.add('animate-moving-right');
+          }else {
+            fifteenCellsDivsArray[emptyCellPosition[0]][emptyCellPosition[1]].classList.add('animate-moving-left');
+
+          }
+        }else {
+          if (currPosition[0]>emptyCellPosition[0]) {
+            fifteenCellsDivsArray[emptyCellPosition[0]][emptyCellPosition[1]].classList.add('animate-moving-top');
+          } else {
+            fifteenCellsDivsArray[emptyCellPosition[0]][emptyCellPosition[1]].classList.add('animate-moving-bottom');
+          }
+        }
         fifteenCellsDivsArray[currPosition[0]][currPosition[1]].innerHTML=null;
+        this.classList=[];
         emptyCellPosition=currPosition.slice(0);
+
       }
 
     }
